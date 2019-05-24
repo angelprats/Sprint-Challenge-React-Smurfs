@@ -34,18 +34,6 @@ class SmurfForm extends Component {
       });
   }
 
-  // submitHandler = e => {
-  //   this.props.addSmurf(e, this.state.smurf);
-
-  //   this.setState({
-  //     smurf: {
-  //       name: '',
-  //       age: '',
-  //       height: ''
-  //     }
-  //   });
-  // };
-
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
