@@ -12,6 +12,11 @@ class App extends Component {
     super(props);
     this.state = {
       smurfs: [],
+      smurf: {
+        name: '',
+        age: '',
+        height: ''
+      }
     };
   }
 
@@ -43,14 +48,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <div>
-          <Route exact path="/" component={Smurfs} />
 
-          <Route path="/smurf-form" component={SmurfForm} />
-        </div> */}
+        <Route
+          exact path="/smurf"
+          render={props => <Smurfs {...props} smurfs={this.state.smurfs} />}
+        />
 
-
-
+        <Route
+          path="/smurf-form"
+          render={props => <SmurfForm {...props} smurfs={this.state.smurfs}
+            addSmurf={this.addSmurf} />}
+        />
 
         <SmurfForm
           smurfs={this.state.smurf}
