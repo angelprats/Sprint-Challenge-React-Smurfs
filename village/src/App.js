@@ -59,14 +59,6 @@ class App extends Component {
           render={props => <SmurfForm {...props} smurfs={this.state.smurfs}
             addSmurf={this.addSmurf} />}
         />
-
-        <SmurfForm
-          smurfs={this.state.smurf}
-          addSmurf={this.addSmurf}
-        />
-        {this.state.smurfs.map(smurf => (
-          <Smurfs smurfs={this.state.smurfs} />
-        ))}
       </div>
     );
   }
