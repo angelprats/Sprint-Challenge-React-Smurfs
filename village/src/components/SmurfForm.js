@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
+
+
 import axios from 'axios';
 
 class SmurfForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      age: '',
-      height: ''
+      smurfs: props.smurfs,
+      addSmurf: {
+        name: '',
+        age: '',
+        height: ''
+      }
     };
   }
 
   addSmurf = (event, smurf) => {
     event.preventDefault();
     axios
-      .post('http://localhost:3333/smurfs', smurf)
+      .post('http://localhost:3333/smurfs', {
+        name: this.state.name,
+        age: this.state.age,
+        height: this.state.height
+      })
       .then(res => {
         this.setState({
           smurfs: res.data
@@ -25,24 +34,21 @@ class SmurfForm extends Component {
       });
   }
 
-  submitHandler = e => {
-    this.props.addSmurf(e, this.state.smurf);
+  // submitHandler = e => {
+  //   this.props.addSmurf(e, this.state.smurf);
 
-    this.setState({
-      smurf: {
-        name: '',
-        age: '',
-        height: ''
-      }
-    });
-  };
+  //   this.setState({
+  //     smurf: {
+  //       name: '',
+  //       age: '',
+  //       height: ''
+  //     }
+  //   });
+  // };
 
   handleInputChange = e => {
-
     this.setState({
-
       [e.target.name]: e.target.value
-
     });
   };
 
